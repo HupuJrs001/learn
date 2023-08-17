@@ -1,0 +1,38 @@
+
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Phone Number with Area Code</title>
+</head>
+<body>
+   <input type="tel" id="phone" placeholder="Enter phone number">
+   <input type="tel" id="areaCode" placeholder="Enter area code">
+
+   <script>
+       function isValidPhoneNumber(value) {
+           // 验证电话号码的逻辑，例如检查长度、格式等
+           return value.length === 10 && value.charAt(0) === '1';
+       }
+
+       function updateAreaCode() {
+           const phoneNumber = document.getElementById('phone').value;
+           const areaCode = phoneNumber.slice(0, 3);
+           document.getElementById('areaCode').value = areaCode;
+       }
+
+       document.getElementById('phone').addEventListener('input', (event) => {
+        console.log('====')
+           if (isValidPhoneNumber(event.target.value)) {
+               document.getElementById('areaCode').value = '';
+           }
+       });
+
+       document.getElementById('areaCode').addEventListener('input', (event) => {
+           if (isValidPhoneNumber(document.getElementById('phone').value)) {
+               event.target.value = '';
+           }
+       });
+   </script>
+</body>
+</html> 
